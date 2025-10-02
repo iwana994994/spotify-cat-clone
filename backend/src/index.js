@@ -1,0 +1,73 @@
+import express from 'express'
+import dotenv from 'dotenv'
+import { connectDB } from './lib/db.js'
+import { clerkMiddleware } from '@clerk/express'
+import path from 'path'
+
+
+import fileUploads from 'express-fileupload'
+import cors from 'cors'
+import { createServer } from 'http'
+import { initializeSocket } from './lib/socket.js'
+
+import authRouter from './routes/auth.routes.js'
+import userRouter from './routes/user.routes.js'
+import adminRouter from './routes/admin.routes.js'
+import songsRouter from './routes/songs.routes.js'
+import albumsRouter from './routes/album.routes.js'
+
+
+dotenv.config()
+const app = express()
+const PORT =process.env.PORT
+const __dirname = path.resolve()
+
+const httpServer = createServer(app)
+initializeSocket(httpServer)
+
+app.use(cors({
+  origin: "http://localhost:3000", // Adjust the origin as needed
+  
+  credentials: true, // Allow credentials if needed
+ 
+}))
+
+app.use(express.json())
+app.use(clerkMiddleware())
+app.use(fileUploads({
+  useTempFiles: true,
+  tempFileDir: path.join(__dirname, 'tmp'),
+  createParentPath: true,
+  limits: { fileSize: 10 * 1024 * 1024 } // Limit file size to 10MB
+}))
+
+//cron jobs
+
+
+app.use("/api/auth",authRouter)
+app.use("/api/users",userRouter)
+app.use("/api/admin",adminRouter)
+app.use("/api/songs",songsRouter)
+app.use("/api/albums",albumsRouter)
+
+
+
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, "..", "frontend", "build")))
+  app.get("*", (req, res) => {
+     console.log("Catch-all route triggered for URL:", req.url);
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
+  })
+}
+
+app.use((req, res, next) => {
+  console.log(`Request method: ${req.method}, url: ${req.url}`);
+  next();
+});
+
+
+httpServer.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`)
+    connectDB()
+})
+
