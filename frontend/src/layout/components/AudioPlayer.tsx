@@ -1,4 +1,4 @@
-import { usePlayerStore } from "@/store/usePlayerStore.tsx";
+import { usePlayerStore } from "@/stores/usePlayerStore"
 
 import { useEffect, useRef } from "react";
 
