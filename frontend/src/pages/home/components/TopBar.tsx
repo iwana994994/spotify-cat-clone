@@ -1,24 +1,39 @@
-import { SignedIn, SignedOut, SignOutButton} from "@clerk/clerk-react"
-import SignedOAuthButton from "./SignedOAuthButton.tsx"
 
+import SignedOAuthButton from "./SignedOAuthButton.tsx"
+import { Link } from "react-router-dom"
+import { SignedOut, UserButton } from "@clerk/clerk-react"
+import { useAuthStore } from "@/stores/useAuthStore.tsx"
+import { LayoutDashboardIcon } from "lucide-react"
 
 const TopBar = () => {
-  return (
-    <div className="flex flex-row items-center justify-between p-4 bg-zinc-800" >
+  const isAdmin = useAuthStore();
+   return (
 
-        <div>Spotify</div>
-        <SignedIn>
-          <SignOutButton/>
-        </SignedIn>
-   <SignedOut>
-        <SignedOAuthButton />
-    </SignedOut>
+       <div className="flex justify-between items-center sticky top-0 backdrop-blur-md  text-white p-4">
+           <div className="flex items-center text-2xl font-bold gap-2 ">
+               <img src="../../../../spotify-cat-logo-512x512.png" alt="Logo" className="w-10 h-10 ml-2" />
+              <h1>Spotify</h1>
+           </div>
+           <div className="flex items-center ">
+               {isAdmin && 
+               <Link to={"/admin"} className="rounded-md bg-gray-600 hover:bg-slate-500 flex items-center p-4  m-2 cn(buttonVariante(variand:outline))">
+               <LayoutDashboardIcon className="w-6 h-6 mr-2 " />
+                 Admin Dashbord
+              
+               </Link>
+              }
+             
+
+              <SignedOut>
+               <SignedOAuthButton/>
+              </SignedOut>
+              <UserButton/>
+           </div>
+       </div>
+   )
 
 
-    </div>
 
- 
-  )
 }
 
 export default TopBar

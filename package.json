@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start":"npm start --prefix backend"
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm start --prefix backend"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/iwana994994/Spotify-clone-2/issues"
   },
-  "homepage": "https://github.com/iwana994994/Spotify-clone-2#readme"
+  "homepage": "https://github.com/iwana994994/Spotify-clone-2#readme",
+  "dependencies": {
+    "react-hot-toast": "^2.6.0"
+  }
 }
