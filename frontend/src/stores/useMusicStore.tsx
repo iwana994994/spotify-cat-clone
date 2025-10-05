@@ -93,7 +93,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
         set({ isLoaded: true });
         try {
             const response = await axiosInstance.get('/albums');
-           
+           console.log("response",response.data, " get Album");
             set({ albums: response.data });
         } catch (error) {
             console.error('Error fetching albums:', error);
@@ -106,8 +106,9 @@ fetchAlbumById:async(id:string)=> {
     set({ isLoaded: true });
 try {
     const response = await axiosInstance.get(`/albums/${id}`);
-   console.log("Backend response:", response.data); // ✅ Dodaj ovo
+   console.log("Backend response: ", response.data); // ✅ Dodaj ovo
     set({currentAlbum:response.data });
+    console.log("Succesful response:  ", response.data);
 } catch (error) {
     console.error('Error fetching albums:', error);
    
