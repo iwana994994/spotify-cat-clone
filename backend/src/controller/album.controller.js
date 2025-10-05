@@ -12,6 +12,7 @@ export const getAllAlbums=async(req,res,next)=>{
 export const getAlbumById=async(req,res,next)=>{
     try{
         const {id}= req.params;
+        console.log("id    ",id);
         const album= await Album.findById(id).populate("songs")// Assuming you have an Album model
     
         if (!album) {
