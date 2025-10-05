@@ -1,11 +1,11 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useAuthStore } from "@/store/useAuthStore.tsx"
+import { useAuthStore } from "@/stores/useAuthStore"
 import DashbordStates from "./components/DashbordStates.tsx"
 import Header from "./components/Header.tsx"
 
 
-import { useMusicStore } from "@/store/useMusicStore.tsx"
+import { useMusicStore } from "@/stores/useMusicStore.tsx"
 import { useEffect } from "react"
 import SongsCard from "./components/SongsCard.tsx"
 import AlbumsCard from "./components/AlbumsCard.tsx"
