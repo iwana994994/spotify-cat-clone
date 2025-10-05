@@ -1,4 +1,4 @@
-import { useMusicStore } from "@/store/useMusicStore.tsx"
+import { useMusicStore } from "@/stores/useMusicStore.tsx";
 
 import { useEffect } from "react";
 import PlayButton from "./PlayButton.tsx";
