@@ -1,5 +1,5 @@
 import { ListMusic, Library, PlayCircle } from "lucide-react";
-import StatsCard from "./StatsCard";
+import StatsCard from "./StatsCard.tsx";
 import { useMusicStore } from "@/stores/useMusicStore.tsx";
 const DashboardStates = () => {
 	const { stats } = useMusicStore();
