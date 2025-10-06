@@ -1,6 +1,6 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useAuthStore } from "@/stores/useAuthStore"
+import { useAuthStore } from "@/stores/useAuthStore.tsx"
 import DashbordStates from "./components/DashboardStates.tsx"
 import Header from "./components/Header.tsx"
 
