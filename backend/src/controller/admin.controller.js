@@ -120,13 +120,9 @@ export const deleteAlbum = async (req, res) => {
     }
 }
 export const checkAdmin = (req, res) => {
-
-    if(    res.status(200).json({ admin:true })
-    );
-else{
-    console.log("in admin.controller is in error");
+    res.status(200).json({ admin: true });
 }
     
-}
+
 
 export const getStats=(req,res)=>{}
