@@ -12,21 +12,21 @@ import AlbumsCard from "./components/AlbumsCard.tsx"
 
 
 const AdminPage = () => {
-    const {isAdmin,isLoaded} = useAuthStore()
+    const {isAdmin} = useAuthStore()
     const {fetchSongs}=useMusicStore()
 
 
     useEffect(() => {
-    fetchSongs()  
+      
+    fetchSongs()
+  
     }, [fetchSongs])
 
-  // ← OVO JE MESTO ZA PROVERU: Van useEffect, u render delu komponente
-  if (!isLoaded) {
-    return <div>Loading admin status...</div>;  // Čekaj da se API završi
-  }
-  if (!isAdmin) {
-    return <div>Forbidden</div>;  // ← OVO SE POKAŽE SAMO AKO JE isAdmin FALSE NAKON PROVERE
-  }
+    
+    if (!isAdmin) {
+      return <div>Forbidden</div>; 
+    }
+  
   return (
     <div>
         <Header/>

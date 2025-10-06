@@ -16,9 +16,9 @@ export default function App() {
       signInFallbackRedirectUrl={"/auth-callback"}/>}/>
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
     
-   
+      <Route path="/admin" element={<AdminPage/>} />
     <Route element={<MainLayout />}>
-    <Route path="/admin" element={<AdminPage/>} />
+    
     <Route path="/" element={<HomePage />} />
     <Route path="/chat" element= {<ChatPage/>}/>
     <Route path="/albums/:id" element={<AlbumPage />} />
