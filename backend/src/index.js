@@ -49,6 +49,7 @@ app.use("/api/users",userRouter)
 app.use("/api/admin",adminRouter)
 app.use("/api/songs",songRouter)
 app.use("/api/albums",albumRouter)
+app.use("/api/stats",statsRouter)
 
 
 if (process.env.NODE_ENV === "production") {

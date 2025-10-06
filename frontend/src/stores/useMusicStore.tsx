@@ -1,5 +1,5 @@
 import  axiosInstance  from '@/lib/axios';
-import type { Album, Song } from '@/types';
+import type { Album, Song, Stats } from '@/types';
 import { toast } from 'react-hot-toast';
 
 
@@ -10,17 +10,24 @@ songs:Song[],
 albums:Album[],
 isLoaded:boolean,
 currentAlbum:Album|null
+
 fetchAlbums:()=>Promise<void>
 fetchAlbumById:(id:string)=>Promise<void>
 FeaturedSongs:Song[],
 MadeForYouSongs:Song[],
 TrendingSongs:Song[],
+
+
 fetchFeaturedSongs:()=>Promise<void>,
 fetchMadeForYouSongs:()=>Promise<void>,
 fetchTrendingSongs:()=>Promise<void>
+
 fetchSongs:()=>Promise<void>
 deleteSong:(id:string)=>Promise<void>
 deleteAlbum:(id:string)=>Promise<void>
+
+stats: Stats;
+fetchStats: () => Promise<void>;
 
 }
 export const useMusicStore = create<MusicStore>((set) => ({
@@ -31,6 +38,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
     FeaturedSongs:[],
     MadeForYouSongs:[],
     TrendingSongs:[],
+    stats: {
+		totalSongs: 0,
+		totalAlbums: 0,
+		totalUsers: 0,
+		totalArtists: 0,
+	},
 
     deleteSong:async(id:string)=>{
         set({ isLoaded: true });
@@ -158,6 +171,21 @@ fetchTrendingSongs:async()=>{
     } finally {
         set({ isLoaded: false });
     }
-}
+},
+	fetchStats: async () => {
+		set({ isLoaded: true });
+		try {
+			const response = await axiosInstance.get("/stats");
+			set({ stats: response.data });
+            console.log("Stats is ",);
+            console.log("response from backend: ✅  ", response.data);
+            console.log("Succesful response:  ", response.data.totalSongs);
+		} catch (error) {
+			console.error("Error fetching stats:  ", error);
+            toast.error("Error fetching stats");
+		} finally {
+			set({ isLoaded: false });
+		}
+	},
 
 }))
