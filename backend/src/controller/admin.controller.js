@@ -127,4 +127,3 @@ else{
     console.log("in admin.controller is in error");
 }
 }
-export const getStats=(req,res)=>{}

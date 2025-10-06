@@ -1,7 +1,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useAuthStore } from "@/stores/useAuthStore"
-import DashbordStates from "./components/DashbordStates.tsx"
+import DashbordStates from "./components/DashboardStates.tsx"
 import Header from "./components/Header.tsx"
 
 
@@ -13,14 +13,17 @@ import AlbumsCard from "./components/AlbumsCard.tsx"
 
 const AdminPage = () => {
     const {isAdmin} = useAuthStore()
-    const {fetchSongs}=useMusicStore()
+    const {fetchSongs,fetchAlbums,fetchStats}=useMusicStore()
 
 
     useEffect(() => {
       
-    fetchSongs()
+    fetchSongs();
+    fetchAlbums();
+    fetchStats();
+    
   
-    }, [fetchSongs])
+    }, [fetchSongs,fetchAlbums,fetchStats])
 
     
     if (!isAdmin) {
