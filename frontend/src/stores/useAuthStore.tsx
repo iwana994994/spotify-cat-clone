@@ -24,7 +24,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
         } catch (error) {
             console.error('Error checking admin status:', error);
             console.log("in useAuthStore is in error");
-            set({ error: 'Failed to check admin status' });
+            set({ 
+                isAdmin: false, 
+                error: 'Failed to check admin status' 
+              });
+              console.log("Admin check failed - set to false");
         } finally {
             set({ isLoaded: false });
         }
