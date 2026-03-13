@@ -5,7 +5,7 @@
 ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb)
 
-<img width="512" height="512" alt="spotify-cat-logo-512x512" src="https://github.com/user-attachments/assets/6a6f7e8d-1bf2-4ef6-8759-dc7586b04e78" /> Spotify Clone
+## <img width="100" height="100" alt="spotify-cat-logo-512x512" src="https://github.com/user-attachments/assets/6a6f7e8d-1bf2-4ef6-8759-dc7586b04e78" /> Spotify Clone
 
 Full-stack music streaming application inspired by Spotify.
 The platform allows users to browse albums, play songs, and manage music through an admin dashboard.
